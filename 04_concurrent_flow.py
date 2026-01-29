@@ -27,8 +27,8 @@ def elevator():
     for f in floors:
         res.append(f.result())
 
-    res = total_floors(res)
-    _logger.info(f"Total floors visited: {res}")
+    resp = total_floors.map(res)
+    _logger.info(f"Total floors visited: {resp}")
 
 if __name__ == "__main__":
     elevator()
