@@ -24,16 +24,12 @@ def total_floors(order_floors: list[int]) -> list[int]:
 @flow
 def elevator():
     res = []
-    floors = []
     total_floors_count = spawn_elevator_floors()
-    for floor in range(total_floors_count, 0, -1):
-        floors.append(stop_at_floor.submit(floor))
-
-    for f in floors:
+    futs = stop_at_floor.map(range(total_floors_count, 0, -1))
+    for f in futs:
         res.append(f.result())
-
-    res = total_floors.map()
-    _logger.info(f"Total floors visited: {res}")
+    aa = total_floors(res)
+    _logger.info(f"Total floors visited: {aa}")
 
 if __name__ == "__main__":
     elevator()
