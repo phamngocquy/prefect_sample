@@ -1,4 +1,3 @@
-import logging
 from prefect import flow, task
 from prefect.logging import get_run_logger
 
@@ -31,8 +30,13 @@ def elevator():
 
     # 3. Passing the list of futures into another task automatically
     # resolves them into their actual results (values) for that task.
-    results = futs.result()
-    aa = total_floors(results)
+
+    aa = total_floors(futs)
+
+    # .result() converts the PrefectFutureList into a standard list[int]
+    # results = futs.result()
+
+    # aa = total_floors(results)
 
     logger.info(f"Total floors visited: {aa}")
 
