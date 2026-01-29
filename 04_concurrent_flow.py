@@ -25,7 +25,7 @@ def total_floors(order_floors: list[int]) -> list[int]:
 def elevator():
     res = []
     total_floors_count = spawn_elevator_floors()
-    futs = stop_at_floor.map(task_args=total_floors_count)
+    futs = stop_at_floor.map(total_floors_count)
     for f in futs:
         res.append(f.result())
     aa = total_floors(res)
