@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 
 @task()
 def spawn_elevator_floors():
-    return 20
+    return list(range(20, 0, -1))
 
 @task
 def stop_at_floor(floor: int) -> int:
@@ -25,7 +25,7 @@ def total_floors(order_floors: list[int]) -> list[int]:
 def elevator():
     res = []
     total_floors_count = spawn_elevator_floors()
-    futs = stop_at_floor.map(range(total_floors_count, 0, -1))
+    futs = stop_at_floor.map(task_args=total_floors_count)
     for f in futs:
         res.append(f.result())
     aa = total_floors(res)
