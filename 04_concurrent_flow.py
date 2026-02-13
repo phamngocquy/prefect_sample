@@ -31,7 +31,7 @@ def elevator():
     # 3. Passing the list of futures into another task automatically
     # resolves them into their actual results (values) for that task.
 
-    aa = total_floors(futs)
+    aa = total_floors(futs) # type: ignore
 
     # .result() converts the PrefectFutureList into a standard list[int]
     # results = futs.result()

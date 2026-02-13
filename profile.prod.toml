@@ -1,0 +1,5 @@
+active = "prod"
+[profiles.prod]
+PREFECT_API_URL = "http://127.0.0.1:4200/api"
+PREFECT_RESULTS_PERSIST_BY_DEFAULT = "true"
+PREFECT_LOGGING_LEVEL = "INFO"

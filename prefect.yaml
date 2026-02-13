@@ -1,0 +1,60 @@
+# Welcome to your prefect.yaml file! You can use this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: quickstart
+prefect-version: 3.6.13
+
+# build section allows you to manage and build docker images
+build:
+- prefect_docker.deployments.steps.build_docker_image:
+    id: build-image
+    requires: ["prefect-docker"]
+    image_name: "my-flow-image"
+    tag: "latest"
+    dockerfile: "auto"
+    # persist_dockerfile: true
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push: null
+
+# pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+- prefect.deployments.steps.set_working_directory:
+    directory: /opt/prefect/quickstart/
+
+# the deployments section allows you to provide configuration for deploying flows
+deployments:
+
+- name: 01_run_flow_directly_deployment
+  infrastructure:
+    type: docker-container
+  entrypoint: 01_run_flow_directly.py:main
+  schedules:
+    - cron: "*/15 * * * *"
+      timezone: "UTC"
+    - cron: "0 9 * * *"
+      timezone: "UTC"
+  work_pool:
+    name: docker-work-pools
+    job_variables:
+      image: my-flow-image:latest
+      image_pull_policy: Never # for running at local & don't want to push image to registry
+
+- name: 03_run_flow_directly_deployment
+  infrastructure:
+    type: docker-container
+  entrypoint: 03_my_flow.py:main
+  schedules:
+    - cron: "*/15 * * * *"
+      timezone: "UTC"
+    - cron: "0 9 * * *"
+      timezone: "UTC"
+  work_pool:
+    name: docker-work-pools
+    job_variables:
+      image: my-flow-image:latest
+      image_pull_policy: Never # for running at local & don't want to push image to registry
+
+
