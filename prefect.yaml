@@ -30,7 +30,7 @@ deployments:
 - name: 01_run_flow_directly_deployment
   infrastructure:
     type: docker-container
-  entrypoint: ./src/01_run_flow_directly.py:main
+  entrypoint: ./src/01_run_flow_directly.py:myflow
   schedules:
     - cron: "0 9 * * *"
       timezone: "UTC"
@@ -43,7 +43,7 @@ deployments:
 - name: 03_run_flow_directly_deployment
   infrastructure:
     type: docker-container
-  entrypoint: ./src/03_my_flow.py:main
+  entrypoint: ./src/03_my_flow.py:myflow
   schedules:
     - cron: "0 10 * * *"
       timezone: "UTC"

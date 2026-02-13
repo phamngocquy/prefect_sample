@@ -6,8 +6,6 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "prefect",
-    "prefect-cloud",
-    "tomli>=2.4.0",
 ]
 
 [tool.black]
@@ -39,6 +37,7 @@ strict = false
 lint = [
     "black>=26.1.0",
     "isort>=7.0.0",
+    "pre-commit>=4.5.1",
     "ruff>=0.15.1",
     "tomli>=2.4.0",
 ]
