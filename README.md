@@ -1,20 +1,21 @@
-## prefect V3:
-- need to config profileu for different environments
-- need to declare prefect server arl for each profile
-- can separate profile for each kind of environment like dev, staging, prod
-- user env to switch between profiles:
-    ```bash
-    export PREFECT_PROFILE=profile.dev.toml
-    ``` 
+# Prefect V3:
 
+## Local simple setup:
+- `docker run -p 4200:4200 -d prefecthq/prefect:3-latest -- prefect server start --host 0.0.0.0`
 
 ## Deployment
 
 ### pre-configuration
-- create profile: 
+- create profile:
     - [profile.dev.toml](./profile.dev.toml)
     - [profiles.prod.toml](./profile.prod.toml) this one should be stored on server
 - declare profile to be used: `export PREFECT_PROFILES_PATH=profile.dev.toml`
-### via [prefetc.yaml](./prefect.yaml) file:
+- `uv sync --frozen`
+
+### deployt via [prefetc.yaml](./prefect.yaml) file:
 - check which profile is used: `prefect profile ls`
 - `prefect deploy --prefect-file prefect.yaml --all`
+
+
+### Reference
+- https://docs.prefect.io/v3/how-to-guides/

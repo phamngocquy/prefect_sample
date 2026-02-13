@@ -13,11 +13,12 @@ def hello_world(name: str = "world", goodbye: bool = False):
 if __name__ == "__main__":
     # creates a deployment and starts a long-running
     # process that listens for scheduled work
-    hello_world.deploy(name="my-first-deployment2",
+    hello_world.deploy(
+        name="my-first-deployment2",
         tags=["onboarding"],
         parameters={"goodbye": True},
         interval=60,
         work_pool_name="docker-work-pools",
         image=DockerImage(name="my_docker"),
-        push=False
+        push=False,
     )

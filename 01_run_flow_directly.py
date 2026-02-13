@@ -1,8 +1,9 @@
 # uv run 01_run_flow_directly.py
 # flow executed by local (executor) machine
 # log, maetadata, etc. will show up in the console and prefect server UI
-from prefect import flow, task
 import random
+
+from prefect import flow, task
 
 
 @task

@@ -56,5 +56,3 @@ deployments:
     job_variables:
       image: my-flow-image:latest
       image_pull_policy: Never # for running at local & don't want to push image to registry
-
-

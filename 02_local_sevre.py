@@ -2,8 +2,9 @@
 # flow executed by local (executor) machine
 # log, maetadata, etc. will show up in the console and prefect server UI
 # a deloyemnt url will be provided to access the flow via a web server
-from prefect import flow, task
 import random
+
+from prefect import flow, task
 
 
 @task
