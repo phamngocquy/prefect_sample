@@ -3,6 +3,9 @@
 ## Local simple setup:
 - `docker run -p 4200:4200 -d prefecthq/prefect:3-latest -- prefect server start --host 0.0.0.0`
 
+## Lint
+- `pre-commit run --all-files` as cli for coding conventions check
+
 ## Deployment
 
 ### pre-configuration
@@ -17,5 +20,6 @@
 - `prefect deploy --prefect-file prefect.yaml --all`
 
 
-### Reference
+
+## Reference
 - https://docs.prefect.io/v3/how-to-guides/

@@ -7,6 +7,7 @@ requires-python = ">=3.10"
 dependencies = [
     "prefect",
     "prefect-cloud",
+    "tomli>=2.4.0",
 ]
 
 [tool.black]
@@ -29,7 +30,6 @@ combine_as_imports = true
 multi_line_output = "3"
 
 [tool.pydocstyle]
-# Checks docstring conventions
 convention = "google"
 add_ignore = [
     "D105", # Missing docstring in magic methods
@@ -45,10 +45,10 @@ lint = [
     "black>=26.1.0",
     "isort>=7.0.0",
     "ruff>=0.15.1",
+    "tomli>=2.4.0",
 ]
 
 [tool.ruff]
-# Exclude a variety of commonly ignored directories.
 exclude = [
     ".bzr",
     ".direnv",

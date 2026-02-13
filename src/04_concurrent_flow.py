@@ -6,11 +6,20 @@ from prefect.logging import get_run_logger
 # show up in both the console and the Prefect UI.
 @task
 def spawn_elevator_floors():
+    """spawn_elevator_floors."""
     return list(range(20, 0, -1))
 
 
 @task
 def stop_at_floor(floor: int) -> int:
+    """stop_at_floor.
+
+    Args:
+        floor (int): floor
+
+    Returns:
+        int:
+    """
     logger = get_run_logger()
     logger.info(f"elevator moving to floor {floor}")
     logger.info(f"elevator stops on floor {floor}")
@@ -19,11 +28,20 @@ def stop_at_floor(floor: int) -> int:
 
 @task
 def total_floors(order_floors: list[int]) -> list[int]:
+    """total_floors.
+
+    Args:
+        order_floors (list[int]): order_floors
+
+    Returns:
+        list[int]:
+    """
     return order_floors
 
 
 @flow
 def elevator():
+    """elevator."""
     logger = get_run_logger()
 
     # Get the list of floors
